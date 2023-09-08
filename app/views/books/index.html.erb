@@ -1,0 +1,28 @@
+<p style="color: green"><%= notice %></p>
+
+<div id="flash-notice-popup" style="display: none;">
+  <p style="color: green"><%= flash[:notice] %></p>
+  <button id="close-popup">Close</button>
+</div>
+
+<h1>Books</h1>
+
+<div id="books">
+  <% @books.each do |book| %>
+    <%= render book %>
+    <p>
+      <%= link_to "Show book details", book %>
+    </p>
+
+    <p>
+    <%= link_to "Edit this book", edit_book_path(book) %>
+    </p>
+
+    <p>
+    <%= link_to "Delete this book", confirm_destroy_book_path(book) %>
+      <!-- Use a link_to helper with confirm_destroy_book_path -->
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "Create new book", new_book_path %>
